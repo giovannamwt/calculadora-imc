@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>IMC</title>
+</head>
+<body>
+<main>
+    <img src= id="homer">
+    <img src="/img/basic.gif" id="homer">
+    <h1>Calcule seu IMC</h1>
+<form id="imcForm">
+    <input type="number" id="peso" placeholder="Informe o peso">
+    <input type="number" id="altura" placeholder="Informe a altura">
+    <button onclick="calcular()">CALCULAR</button>
+</form>
+<h2 id="resultado"></h2>
+<p id="classificar"></p>
+
+</main>
+<script>
+        document.getElementById('imcForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+    });
+    function calcular(){
+        let peso = parseFloat(document.getElementById('peso').value)
+        let altura = parseFloat(document.getElementById('altura').value)
+        let imc = peso/(altura*altura)
+        document.getElementById('resultado').textContent= `Seu IMC é :`+imc
+        if (imc<18.5){
+            document.getElementById('classificar').textContent= `Desnutrição`
+            document.getElementById('homer').src= "/img/magro.gif"
+        }
+        else if (imc<24.9){
+            document.getElementById('classificar').textContent= `Normal (peso adequado)`
+            document.getElementById('homer').src= "/img/giphy.gif"
+        }
+        else if (imc<29.9){
+            document.getElementById('classificar').textContent= `Sobrepeso`
+            document.getElementById('homer').src= "/img/fat-pride.gif"
+        }
+        else if (imc<34.9){
+            document.getElementById('classificar').textContent= `Obesidade grau 1`
+            document.getElementById('homer').src= "img/obesidade-mitos.gif"
+        }
+        else if (imc<40){
+            document.getElementById('classificar').textContent= `Obesidade grau 2`
+            document.getElementById('homer').src= `src="/img/magro.gif"`
+        }
+        else if (imc>41){
+            document.getElementById('classificar').textContent= `Obesidade extrema`
+            document.getElementById('homer').src= "/img/giphy (1).gif"
+        }
+
+            
+        
+    }
+</script> 
+</body>
+</html>
